@@ -20,6 +20,9 @@ public class AccountStatement {
         operations.add(0, new Operation(amount, dateOperation));
     }
 
+    public List<Operation> getOperations() {
+        return operations;
+    }
 
     private void printStatement(PrintStream printer) {
         for (Operation operation : operations) {
