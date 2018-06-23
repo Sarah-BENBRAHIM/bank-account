@@ -1,4 +1,4 @@
-package src.test.java.com.github.bank.account;
+package test.java.com.github.bank.account;
 
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
