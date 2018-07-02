@@ -37,34 +37,22 @@ public class AccountTest {
 
 
     @Test
-    public void deposit_ok() {
-
+    public void should_deposit_ok_when_amount_is_equal_to_1000() throws ParseException {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date depositDate = null;
-        try {
-            depositDate = formatter.parse("23/06/2018");
-            Amount depositAmount = new Amount(1000);
-
-            account.deposit(depositAmount, depositDate);
-            Transaction transaction = new Transaction(depositAmount, depositDate);
-
-            verify(accountStatement).addOperation(transaction, depositAmount);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date depositDate =  formatter.parse("23/06/2018");
+        Amount depositAmount = new Amount(1000);
+        account.deposit(depositAmount, depositDate);
+        Transaction transaction = new Transaction(depositAmount, depositDate);
+        verify(accountStatement).addOperation(transaction, depositAmount);
     }
 
     @Test
-    public void withdraawal_ok() {
+    public void should_withdraawal_ok_when_amount_is_equal_to_500() throws ParseException {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date withdrawalDate = formatter.parse("23/06/2018");
-            account.withdrawal(new Amount(500), withdrawalDate);
-            Transaction transaction = new Transaction(new Amount(-500), withdrawalDate);
-            verify(accountStatement).addOperation(transaction, new Amount(-500));
-        }catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date withdrawalDate = formatter.parse("23/06/2018");
+        account.withdrawal(new Amount(500), withdrawalDate);
+        Transaction transaction = new Transaction(new Amount(-500), withdrawalDate);
+        verify(accountStatement).addOperation(transaction, new Amount(-500));
     }
 
     @Test

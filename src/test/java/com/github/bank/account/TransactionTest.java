@@ -29,41 +29,29 @@ public class TransactionTest {
     PrintStream printer;
 
     @Test
-    public void equal_to_transaction_ok() {
+    public void equal_to_transaction_ok_when_amount_is_equal_to_1000() throws ParseException {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date transactionDate = formatter.parse("24/06/2018");
-            Transaction depositOfOneHundred = new Transaction(new Amount(1000), transactionDate);
-            Transaction anotherDepositOfOneHundred = new Transaction(new Amount(1000), transactionDate);
-            assertThat(depositOfOneHundred, is(equalTo(anotherDepositOfOneHundred)));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date transactionDate = formatter.parse("24/06/2018");
+        Transaction depositOfOneThousand = new Transaction(new Amount(1000), transactionDate);
+        Transaction anotherDepositOfOneThousand = new Transaction(new Amount(1000), transactionDate);
+        assertThat(depositOfOneThousand, is(equalTo(anotherDepositOfOneThousand)));
     }
 
     @Test
-    public void print_credit_trasanction_ok() {
+    public void should_print_credit_trasanction_ok_when_amount_is_equal_to_1000() throws ParseException {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date transactionDate = formatter.parse("24/06/2018");
-            Transaction transaction = new Transaction(new Amount(1000), transactionDate);
-            transaction.printTransaction(printer, new Amount(3000));
-            verify(printer).println(" 24/06/2018                   | 1000                         |                              | 3000                         |");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date transactionDate = formatter.parse("24/06/2018");
+        Transaction transaction = new Transaction(new Amount(1000), transactionDate);
+        transaction.printTransaction(printer, new Amount(3000));
+        verify(printer).println(" 24/06/2018                   | 1000                         |                              | 3000                         |");
     }
 
     @Test
-    public void print_debit_trasanction_ok() {
+    public void should_print_debit_trasanction_ok_when_amount_is_equal_to_500() throws ParseException {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date transactionDate = formatter.parse("24/06/2018");
-            Transaction transaction = new Transaction(new Amount(-500), transactionDate);
-            transaction.printTransaction(printer, new Amount(3000));
-            verify(printer).println(" 24/06/2018                   |                              | 500                          | 3000                         |");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date transactionDate = formatter.parse("24/06/2018");
+        Transaction transaction = new Transaction(new Amount(-500), transactionDate);
+        transaction.printTransaction(printer, new Amount(3000));
+        verify(printer).println(" 24/06/2018                   |                              | 500                          | 3000                         |");
     }
 }

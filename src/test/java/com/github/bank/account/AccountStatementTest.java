@@ -36,7 +36,7 @@ public class AccountStatementTest {
     }
 
     @Test
-    public void print_header_ok() {
+    public void should_print_header_ok() {
         accountStatement.printAccountStatement(printer);
         StringBuilder header = new StringBuilder();
         header.append(AccountStatement.TOP_HEADER).append("\n").append(AccountStatement.HEADER).append("\n").append(AccountStatement.TOP_HEADER);
@@ -44,32 +44,22 @@ public class AccountStatementTest {
     }
 
     @Test
-    public void print_deposit_ok() {
+    public void should_print_deposit_ok_when_amount_is_equal_to_1000() throws ParseException {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date depositDate = null;
-        try {
-            depositDate = formatter.parse("24/06/2018");
-            Transaction transaction = new Transaction(new Amount(1000), depositDate);
-            Operation depositOperation = new Operation(transaction, new Amount(3000));
-            depositOperation.printOperation(printer);
-            verify(printer).println(" 24/06/2018                   | 1000                         |                              | 3000                         |");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date depositDate = formatter.parse("24/06/2018");
+        Transaction transaction = new Transaction(new Amount(1000), depositDate);
+        Operation depositOperation = new Operation(transaction, new Amount(3000));
+        depositOperation.printOperation(printer);
+        verify(printer).println(" 24/06/2018                   | 1000                         |                              | 3000                         |");
     }
 
     @Test
-    public void print_withdrawal_ok() {
+    public void should_print_withdrawal_ok_when_amount_is_equal_to_500() throws ParseException {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date withdrawalDate = null;
-        try {
-            withdrawalDate = formatter.parse("24/06/2018");
-            Transaction transaction = new Transaction(new Amount(-500), withdrawalDate);
-            Operation depositOperation = new Operation(transaction, new Amount(3000));
-            depositOperation.printOperation(printer);
-            verify(printer).println(" 24/06/2018                   |                              | 500                          | 3000                         |");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date withdrawalDate = formatter.parse("24/06/2018");
+        Transaction transaction = new Transaction(new Amount(-500), withdrawalDate);
+        Operation depositOperation = new Operation(transaction, new Amount(3000));
+        depositOperation.printOperation(printer);
+        verify(printer).println(" 24/06/2018                   |                              | 500                          | 3000                         |");
     }
 }

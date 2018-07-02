@@ -24,7 +24,7 @@ public class AmountTest {
     }
 
     @Test
-    public void sum_ok() {
+    public void sum_ok_when_sum_equal_to_2000() {
         Amount amount1 = new Amount(1000);
         Amount amount2= new Amount(1000);
         Amount amount3 = new Amount(2000);
@@ -46,12 +46,12 @@ public class AmountTest {
     }
 
     @Test
-    public void absolute_value_ok() {
+    public void absolute_value_ok_when_amount_equal_to_10() {
         Amount minus = new Amount(-10);
         assertThat(new Amount(10), is(equalTo(minus.absoluteValue())));
     }
 
-    @Test public void negative_value_ok() {
+    @Test public void negative_value_ok_when_amount_equal_to_10() {
         Amount amount = new Amount(10);
         assertThat(new Amount(-10), is(equalTo(amount.getNegativeValue())));
     }
