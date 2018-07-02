@@ -1,4 +1,4 @@
-package main.java.com.github.bank.account;
+package com.github.bank.account;
 
 /**
  * Created by sbenbrahi on 24/06/2018.

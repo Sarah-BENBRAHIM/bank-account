@@ -1,8 +1,9 @@
-package main.java.com.github.bank;
+package com.github.bank;
 
-import main.java.com.github.bank.account.Account;
-import main.java.com.github.bank.account.AccountStatement;
-import main.java.com.github.bank.account.Amount;
+
+import com.github.bank.account.Account;
+import com.github.bank.account.AccountStatement;
+import com.github.bank.account.Amount;
 
 import java.text.DateFormat;
 import java.text.ParseException;

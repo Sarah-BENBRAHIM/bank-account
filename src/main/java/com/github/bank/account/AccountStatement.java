@@ -1,4 +1,4 @@
-package main.java.com.github.bank.account;
+package com.github.bank.account;
 
 import java.io.PrintStream;
 import java.util.LinkedList;
